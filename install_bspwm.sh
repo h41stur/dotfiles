@@ -45,8 +45,7 @@ installer() {
 		fi
 
 		sudo -u $USERINSTALL chmod +x /home/$USERINSTALL/.config/bspwm/bspwmrc /home/$USERINSTALL/.config/sxhkd/sxhkdrc
-		sleep 10
-		shutdown -r now
+		echo -e "[+] Aguarde a instalacao, faca login escolhendo o bspwm e rode o installer novamente."
 }
 
 if [ $DEP -lt '2' ]
@@ -97,5 +96,4 @@ ln -sf $HOME/.prog/keyb /usr/bin/keyb
 cp -f keyboard /etc/default/
 
 # RESTART
-sleep 10
-shutdown -r now
+echo -e "[+] Aguarde a instalacao e reinicia a maquina"
