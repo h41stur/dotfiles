@@ -45,6 +45,7 @@ installer() {
 		fi
 
 		sudo -u $USERINSTALL chmod +x /home/$USERINSTALL/.config/bspwm/bspwmrc /home/$USERINSTALL/.config/sxhkd/sxhkdrc
+		sleep 10
 		shutdown -r now
 }
 
@@ -96,4 +97,5 @@ ln -sf $HOME/.prog/keyb /usr/bin/keyb
 cp -f keyboard /etc/default/
 
 # RESTART
+sleep 10
 shutdown -r now
