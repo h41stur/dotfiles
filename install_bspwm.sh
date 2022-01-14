@@ -71,6 +71,7 @@ sudo -u $USERINSTALL fc-cache -fv
 if [ $OS = '1' ]
 then
 	YAY=$(which yay | grep git | wc -l)
+	rm /var/lib/pacman/db.lck
 	if [ $YAY -lt '1' ]
 	then
 		cd /home/$USERINSTALL
