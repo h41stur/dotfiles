@@ -3,8 +3,8 @@
 # Consult the keyboard(5) manual page.
 
 XKBMODEL="pc105"
-XKBLAYOUT="us_intl"
-XKBVARIANT=""
+XKBLAYOUT="us"
+XKBVARIANT="intl"
 XKBOPTIONS=""
 
 BACKSPACE="guess"
