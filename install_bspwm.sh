@@ -70,7 +70,7 @@ sudo -u $USERINSTALL fc-cache -fv
 # POLYBAR
 if [ $OS = '1' ]
 then
-	YAY=$(which yay | wc -l)
+	YAY=$(which yay | grep git | wc -l)
 	if [ $YAY -lt '1' ]
 	then
 		cd /home/$USERINSTALL
