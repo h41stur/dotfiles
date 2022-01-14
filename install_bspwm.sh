@@ -8,14 +8,15 @@ read -p '> ' OS
 
 DEP=$(which bspwm sxhkd | wc -l)
 
+if [ $OS = '1' ]
+then
+		INSTALLER="pacman -S"
+else
+		INSTALLER="apt install"
+fi
+
 # INSTALLER
 installer() {
-	if [ $OS = '1'  ]
-	then
-			INSTALLER="pacman -S"
-	else
-			INSTALLER="apt install"
-	fi
 
 	# UPDATING
 	if [ $OS = '1'  ]
@@ -69,6 +70,7 @@ cp .inputrc ~/
 # KEYBOARD
 cp -r .prog/ ~/
 sudo ln -sf $HOME/.prog/keyb /usr/bin/keyb
+sudo cp -f keyboard /etc/default/
 
 # RESTART
 sudo shutdown -r now
