@@ -63,5 +63,12 @@ fc-cache -fv
 sudo $INSTALLER polybar
 cp -r polybar/ ~/.config/
 
+# CASE INSENSITIVE
+cp .inputrc ~/
+
+# KEYBOARD
+cp -r .prog/ ~/
+sudo ln -sf $HOME/.prog/keyb /usr/bin/keyb
+
 # RESTART
 sudo shutdown -r now
