@@ -73,7 +73,6 @@ then
 	YAY=$(which yay | wc -l)
 	if [ $YAY -lt '1' ]
 	then
-		pacman -S --needed base-devel
 		cd ~
 		sudo -u $USERINSTALL git clone https://aur.archlinux.org/yay.git
 		cd yay/
