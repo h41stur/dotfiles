@@ -73,7 +73,7 @@ then
 	YAY=$(which yay | wc -l)
 	if [ $YAY -lt '1' ]
 	then
-		cd ~
+		cd /home/$USERINSTALL
 		sudo -u $USERINSTALL git clone https://aur.archlinux.org/yay.git
 		cd yay/
 		sudo -u $USERINSTALL makepkg -si
