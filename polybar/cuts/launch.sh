@@ -15,4 +15,5 @@ polybar -q bottom -c "$DIR"/config.ini &
 if [[ $(xrandr -q | grep 'HDMI' | grep -w 'connected' | wc -l) = 1 ]]
 then
 		polybar -q external -c "$DIR"/config.ini &
+		polybar -q bottom_external -c "$DIR"/config.ini & 
 fi
