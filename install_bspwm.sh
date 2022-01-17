@@ -79,6 +79,7 @@ then
 		cd yay/
 		sudo -u $USERINSTALL makepkg -si
 		cd $HOME
+		$INSTALLER bash-completion
 	fi
 	sudo -u $USERINSTALL yay -S polybar
 else
@@ -94,6 +95,12 @@ sudo -u $USERINSTALL cp .inputrc /home/$USERINSTALL/
 sudo -u $USERINSTALL cp -r .prog/ /home/$USERINSTALL/
 ln -sf $HOME/.prog/keyb /usr/bin/keyb
 cp -f keyboard /etc/default/
+
+# VIM
+sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
+
+# PRINT
+$INSTALLER scrot xclip
 
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicia a maquina"
