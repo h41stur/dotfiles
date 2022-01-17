@@ -7,8 +7,8 @@ MONITOR=$(xrandr -q | grep -w connected | cut -d ' ' -f1 | tail -n1)
 MONITOR_CONN=$(xrandr -q | grep 'HDMI' | grep -w connected | wc -l)
 
 if [ $MONITOR_CONN -gt 0 ]; then
-		xrandr --output "$MONITOR_CONN" --primary --mode 1920x1080 --rotate normal --output "$NOTE" --mode 1920x1080 --rotate normal --left-of "$MONITOR_CONN"
-		bspc monitor "$MONITOR_CONN" -d I II III IV V
+		xrandr --output "$MONITOR" --primary --mode 1920x1080 --rotate normal --output "$NOTE" --mode 1920x1080 --rotate normal --left-of "$MONITOR_CONN"
+		bspc monitor "$MONITOR" -d I II III IV V
 		bspc monitor "$NOTE" -d VI VII VIII IX X
 else
 		bspc monitor -d I II III IV V VI VII VIII IX X
