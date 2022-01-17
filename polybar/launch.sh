@@ -16,6 +16,10 @@ launch_bar() {
 		polybar -q bottom -c "$dir/$style/config.ini" &
 	elif [[ "$style" == "pwidgets" ]]; then
 		bash "$dir"/pwidgets/launch.sh --main
+	elif [[ "$style" == "cuts" ]]; then
+		polybar -q external -c "$dir/$style/config.ini" &
+		polybar -q top -c "$dir/$style/config.ini" &
+		polybar -q bottom -c "$dir/$style/config.ini" &
 	else
 		polybar -q main -c "$dir/$style/config.ini" &	
 	fi

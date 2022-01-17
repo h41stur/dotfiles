@@ -2,7 +2,17 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+NOTE=$(xrandr -q | grep -w connected | cut -d ' ' -f1 | head -n1)
+MONITOR=$(xrandr -q | grep -w connected | cut -d ' ' -f1 | tail -n1)
+MONITOR_CONN=$(xrandr -q | grep 'HDMI' | grep -w connected | wc -l)
+
+if [ $MONITOR_CONN -gt 0 ]; then
+		xrandr --output "$MONITOR_CONN" --primary --mode 1920x1080 --rotate normal --output "$NOTE" --mode 1920x1080 --rotate normal --left-of "$MONITOR_CONN"
+		bspc monitor "$MONITOR_CONN" -d I II III IV V
+		bspc monitor "$NOTE" -d VI VII VIII IX X
+else
+		bspc monitor -d I II III IV V VI VII VIII IX X
+fi
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -19,4 +29,4 @@ bspc rule -a Screenkey manage=off
 ${HOME}/.fehbg
 compton &
 /usr/bin/numlockx on
-${HOME}/.config/polybar/launch.sh --cuts
+${HOME}/.config/polybar/cuts/launch.sh
