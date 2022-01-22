@@ -102,5 +102,8 @@ sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
 # PRINT
 $INSTALLER scrot xclip
 
+# TOUCHPAD
+cp 50-libinput.conf /etc/X11/xorg.conf.d/
+
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicia a maquina"
