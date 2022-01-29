@@ -70,6 +70,7 @@ sudo -u $USERINSTALL fc-cache -fv
 # POLYBAR
 if [ $OS = '1' ]
 then
+	pacman -S arandr
 	YAY=$(which yay | grep git | wc -l)
 	rm /var/lib/pacman/db.lck
 	if [ $YAY -lt '1' ]
