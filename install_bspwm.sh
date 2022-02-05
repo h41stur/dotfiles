@@ -82,7 +82,7 @@ then
 		cd $HOME
 		$INSTALLER bash-completion
 	fi
-	sudo -u $USERINSTALL yay -S polybar
+	sudo -u $USERINSTALL yay -S polybar ulauncher
 else
 	apt install polybar
 fi
