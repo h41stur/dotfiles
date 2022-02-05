@@ -83,6 +83,8 @@ then
 		$INSTALLER bash-completion
 	fi
 	sudo -u $USERINSTALL yay -S polybar ulauncher
+	mkdir -p ~/.config/ulauncher/user-themes/
+ 	cp -R $dir/Xfce-Setup-02/Theme\ Ulauncher/* ~/.config/ulauncher/user-themes/
 else
 	apt install polybar
 fi
