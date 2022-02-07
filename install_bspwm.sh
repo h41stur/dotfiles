@@ -12,7 +12,7 @@ echo -e "\n[1] Arch\n[2] Debian Based\n"
 read -p '> ' OS
 
 DEP=$(which bspwm sxhkd | wc -l)
-HOME=$(pwd)
+DIR=$(pwd)
 USERINSTALL=$SUDO_USER
 
 if [ $OS -eq 1 ]
@@ -79,7 +79,7 @@ then
 		sudo -u $USERINSTALL git clone https://aur.archlinux.org/yay.git
 		cd yay/
 		sudo -u $USERINSTALL makepkg -si
-		cd $HOME
+		cd $DIR 
 		$INSTALLER bash-completion
 	fi
 	sudo -u $USERINSTALL yay -S polybar ulauncher
@@ -96,7 +96,7 @@ sudo -u $USERINSTALL cp .inputrc /home/$USERINSTALL/
 
 # KEYBOARD
 sudo -u $USERINSTALL cp -r .prog/ /home/$USERINSTALL/
-ln -sf $HOME/.prog/keyb /usr/bin/keyb
+ln -sf $DIR/.prog/keyb /usr/bin/keyb
 cp -f keyboard /etc/default/
 
 # VIM
