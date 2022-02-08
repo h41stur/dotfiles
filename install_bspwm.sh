@@ -108,5 +108,8 @@ $INSTALLER scrot xclip
 # TOUCHPAD
 cp 50-libinput.conf /etc/X11/xorg.conf.d/
 
+# RODAR JAVA APPLICATIONS
+$INSTALLER wmname
+
 # RESTART
-echo -e "[+] Aguarde a instalacao e reinicia a maquina"
+echo -e "[+] Aguarde a instalacao e reinicie a maquina"

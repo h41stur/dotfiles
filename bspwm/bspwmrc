@@ -30,3 +30,4 @@ ${HOME}/.fehbg
 compton &
 /usr/bin/numlockx on
 ${HOME}/.config/polybar/cuts/launch.sh
+wmname LG3D
