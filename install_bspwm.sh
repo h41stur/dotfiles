@@ -98,6 +98,7 @@ sudo -u $USERINSTALL cp .inputrc /home/$USERINSTALL/
 sudo -u $USERINSTALL cp -r .prog/ /home/$USERINSTALL/
 ln -sf $DIR/.prog/keyb /usr/bin/keyb
 cp -f keyboard /etc/default/
+ln -sf $DIR/.prog/sxhkd-help /usr/bin/sxhkd-help
 
 # VIM
 sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL

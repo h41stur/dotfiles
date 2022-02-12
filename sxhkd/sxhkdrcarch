@@ -131,3 +131,20 @@ Print
 
 shift + Print
         scrot -s 'screenshot_%Y%m$d_%H%M%S.png' -e 'mkdir -p ~/screenshots && mv $f ~/screenshots && xclip -selection clipboard -t image/png -i ~/screenshots/`ls -1 -t ~/screenshots | head -1`'
+
+# volume control
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +5%
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -5%
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
+
+# shutdown
+super + alt + s
+	shutdown now
+
+# show help
+super + slash
+	sxhkd-help
+
