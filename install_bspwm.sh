@@ -112,5 +112,11 @@ cp 50-libinput.conf /etc/X11/xorg.conf.d/
 # RODAR JAVA APPLICATIONS
 $INSTALLER wmname
 
+# MOUSE
+$INSTALLER xorg-xsetroot
+
+# CARACTERES
+localectl set-locale LANG=en_US.UTF-8
+
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicie a maquina"
