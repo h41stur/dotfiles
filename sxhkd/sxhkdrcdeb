@@ -141,7 +141,7 @@ XF86AudioMute
 
 # shutdown
 super + alt + s
-	shutdown now
+	~/.config/polybar/cuts/scripts/powermenu.sh &
 
 # show help
 super + slash

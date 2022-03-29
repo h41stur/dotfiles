@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 if [ "$EUID" -ne 0 ]
 then
@@ -117,6 +117,9 @@ $INSTALLER xorg-xsetroot
 
 # CARACTERES
 localectl set-locale LANG=en_US.UTF-8
+
+# THEME
+cp -f gtkrc /usr/share/gtk-2.0/gtkrc
 
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicie a maquina"
