@@ -139,6 +139,10 @@ XF86AudioLowerVolume
 	pactl set-sink-volume 0 -5%
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
+super + ctrl + Up
+	pactl set-sink-volume 0 +5%
+super + ctrl + Down
+	pactl set-sink-volume 0 -5%
 
 # shutdown
 super + alt + s
