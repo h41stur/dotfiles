@@ -104,7 +104,8 @@ ln -sf $DIR/.prog/sxhkd-help /usr/bin/sxhkd-help
 sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
 
 # PRINT
-$INSTALLER scrot xclip
+#$INSTALLER scrot xclip
+$INSTALER flameshot
 
 # TOUCHPAD
 cp 50-libinput.conf /etc/X11/xorg.conf.d/
