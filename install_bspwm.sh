@@ -1,10 +1,10 @@
 !/bin/bash
 
-if [ "$EUID" -ne 0 ]
-then
-		echo "Rode com sudo!"
-		exit
-fi
+#if [ "$EUID" -ne 0 ]
+#then
+#		echo "Rode com sudo!"
+#		exit
+#fi
 
 echo -e "Qual SO?\n"
 echo -e "\n[1] Arch\n[2] Debian Based\n"
@@ -13,13 +13,13 @@ read -p '> ' OS
 
 DEP=$(which bspwm sxhkd | wc -l)
 DIR=$(pwd)
-USERINSTALL=$SUDO_USER
+USERINSTALL=$(whoami)
 
 if [ $OS -eq 1 ]
 then
-		INSTALLER="pacman -S"
+		INSTALLER="sudo pacman -S"
 else
-		INSTALLER="apt install"
+		INSTALLER="sudo apt install"
 fi
 
 # INSTALLER
@@ -28,23 +28,25 @@ installer() {
 		# UPDATE
 		if [ $OS -eq 1 ]
 		then
-				pacman -Syu
+				sudo pacman -Syu
 		else
-				apt update && apt upgrade -y
+				sudo apt update
+				sudo apt upgrade -y
 		fi
 
 		# INSTALLING BSPWM
 		$INSTALLER bspwm sxhkd
-		sudo -u $USERINSTALL mkdir -p /home/$USERINSTALL/.config/{bspwm,sxhkd}
-		sudo -u $USERINSTALL cp bspwm/bspwmrc /home/$USERINSTALL/.config/bspwm/
+		mkdir -p $HOME/.config/bspwm
+		mkdir -p $HOME/.config/sxhkd
+		cp bspwm/bspwmrc $HOME/.config/bspwm/
 		if [ $OS = '1' ]
 		then
-				sudo -u $USERINSTALL cp sxhkd/sxhkdrcarch /home/$USERINSTALL/.config/sxhkd/sxhkdrc
+				cp sxhkd/sxhkdrcarch $HOME/.config/sxhkd/sxhkdrc
 		else
-				sudo -u $USERINSTALL cp sxhkd/sxhkdrcdeb /home/$USERINSTALL/.config/sxhkd/sxhkdrc
+				cp sxhkd/sxhkdrcdeb $HOME/.config/sxhkd/sxhkdrc
 		fi
 
-		sudo -u $USERINSTALL chmod +x /home/$USERINSTALL/.config/bspwm/bspwmrc /home/$USERINSTALL/.config/sxhkd/sxhkdrc
+		chmod +x $HOME/.config/bspwm/bspwmrc $HOME/.config/sxhkd/sxhkdrc
 		echo -e "[+] Aguarde a instalacao, faca login escolhendo o bspwm e rode o installer novamente."
 }
 
@@ -55,65 +57,65 @@ fi
 
 # FEH ROFI COMPTON
 $INSTALLER feh rofi compton
-sudo -u $USERINSTALL cp -r .wallpapers/ /home/$USERINSTALL
-sudo -u $USERINSTALL cp .fehbg /home/$USERINSTALL
-sudo -u $USERINSTALL cp -r rofi/ /home/$USERINSTALL/.config/
+cp -r .wallpapers/ $HOME
+cp .fehbg $HOME
+cp -r rofi/ $HOME/.config/
 
 # NUMLOCKX
 $INSTALLER numlockx
 
 # FONTS
-sudo -u $USERINSTALL mkdir -p /home/$USERINSTALL/.local/share/fonts
-sudo -u $USERINSTALL cp -r fonts/* /home/$USERINSTALL/.local/share/fonts/
-sudo -u $USERINSTALL fc-cache -fv
+mkdir -p $HOME/.local/share/fonts
+cp -r fonts/* $HOME/.local/share/fonts/
+fc-cache -fv
 
 # POLYBAR
 if [ $OS = '1' ]
 then
-	pacman -S arandr
+	sudo pacman -S arandr
 	YAY=$(which yay | wc -l)
-	rm /var/lib/pacman/db.lck
+	sudo rm /var/lib/pacman/db.lck
 	if [ $YAY -lt '1' ]
 	then
-		cd /home/$USERINSTALL
-		sudo -u $USERINSTALL git clone https://aur.archlinux.org/yay.git
+		cd $HOME
+		git clone https://aur.archlinux.org/yay.git
 		cd yay/
-		sudo -u $USERINSTALL makepkg -si
+		makepkg -si
 		cd $DIR 
 		$INSTALLER bash-completion
 	fi
-	sudo -u $USERINSTALL yay -S polybar ulauncher
-	mkdir -p ~/.config/ulauncher/user-themes/
- 	cp -R $dir/Xfce-Setup-02/Theme\ Ulauncher/* ~/.config/ulauncher/user-themes/
+	yay -S polybar ulauncher
+	mkdir -p $HOME/.config/ulauncher/user-themes/
+ 	cp -R $DIR/Xfce-Setup-02/Theme\ Ulauncher/* $HOME/.config/ulauncher/user-themes/
 else
-	apt install polybar
+	sudo apt install polybar
 fi
 	
-sudo -u $USERINSTALL cp -r polybar/ /home/$USERINSTALL/.config/
+cp -r polybar/ $HOME/.config/
 
 # CASE INSENSITIVE
-sudo -u $USERINSTALL cp .inputrc /home/$USERINSTALL/
+cp .inputrc $HOME
 
 # KEYBOARD
-sudo -u $USERINSTALL cp -r .prog/ /home/$USERINSTALL/
-ln -sf $DIR/.prog/keyb /usr/bin/keyb
-cp -f keyboard /etc/default/
-ln -sf $DIR/.prog/sxhkd-help /usr/bin/sxhkd-help
+cp -r .prog/ $HOME
+sudo ln -sf /home/$USERINSTALL/.prog/keyb /usr/bin/keyb
+sudo cp -f keyboard /etc/default/
+sudo ln -sf /home/$USERINSTALL/.prog/sxhkd-help /usr/bin/sxhkd-help
 
 # VIM
-sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
+cp .vimrc $HOME
 
 # ZSH
 $INSTALLER zsh
-sudo -u $USERINSTALL sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo -u $USERINSTALL cp .zshrc /home/$USERINSTALL
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cp .zshrc $HOME
 
 # PRINT
 #$INSTALLER scrot xclip
 $INSTALLER flameshot
 
 # TOUCHPAD
-cp 50-libinput.conf /etc/X11/xorg.conf.d/
+sudo cp 50-libinput.conf /etc/X11/xorg.conf.d/
 
 # RODAR JAVA APPLICATIONS
 $INSTALLER wmname
@@ -122,10 +124,10 @@ $INSTALLER wmname
 $INSTALLER xorg-xsetroot
 
 # CARACTERES
-localectl set-locale LANG=en_US.UTF-8
+sudo localectl set-locale LANG=en_US.UTF-8
 
 # THEME
-cp -f gtkrc /usr/share/gtk-2.0/gtkrc
+sudo cp -f gtkrc /usr/share/gtk-2.0/gtkrc
 
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicie a maquina"
