@@ -103,6 +103,11 @@ ln -sf $DIR/.prog/sxhkd-help /usr/bin/sxhkd-help
 # VIM
 sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
 
+# ZSH
+$INSTALLER zsh
+sudo -u $USERINSTALL sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo -u $USERINSTALL cp .zshrc /home/$USERINSTALL
+
 # PRINT
 #$INSTALLER scrot xclip
 $INSTALLER flameshot
