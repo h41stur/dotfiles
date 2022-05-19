@@ -71,7 +71,7 @@ sudo -u $USERINSTALL fc-cache -fv
 if [ $OS = '1' ]
 then
 	pacman -S arandr
-	YAY=$(which yay | grep git | wc -l)
+	YAY=$(which yay | wc -l)
 	rm /var/lib/pacman/db.lck
 	if [ $YAY -lt '1' ]
 	then
@@ -105,7 +105,7 @@ sudo -u $USERINSTALL cp .vimrc /home/$USERINSTALL
 
 # PRINT
 #$INSTALLER scrot xclip
-$INSTALER flameshot
+$INSTALLER flameshot
 
 # TOUCHPAD
 cp 50-libinput.conf /etc/X11/xorg.conf.d/
