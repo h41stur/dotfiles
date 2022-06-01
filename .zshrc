@@ -114,15 +114,27 @@ function commit {
 
 function push {
 		gt=$(github | wc -c)
+		dir=$(basename `pwd`)
 		if [ $gt -lt 10 ]
 		then
 				echo -n "GitHub Token needed on ~/.zshrc"
 				echo
-		elif [ $# -eq 0 ]
-		then
-				echo -n "Usage:\n\tpush <repository name>"
-				echo
 		else
-				git push https://`github`@github.com/h41stur/$1.git
+				git push https://`github`@github.com/h41stur/$dir.git
 		fi
 }
+
+function cert {
+                if [ $# -eq 0 ]
+                then
+                                echo -n "cert domain"
+                                echo
+                else
+                                curl -s "https://crt.sh/?q=%.$1" -o /tmp/rawdata; cat /tmp/rawdata | grep "<TD>" | grep -vE "style" | cut -d ">" -f 2 | grep -Po '.*(?=....$)' | sort -u | grep -v "*"
+                fi
+                }
+
+function md {
+                mkdir $1 && cd $1
+}
+
