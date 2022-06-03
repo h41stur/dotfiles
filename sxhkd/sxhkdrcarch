@@ -154,3 +154,7 @@ super + alt + s
 super + slash
 	sxhkd-help
 
+# turn off monitors
+super + shift + m
+	sleep 1 && xset -display :0.0 dpms force off
+
