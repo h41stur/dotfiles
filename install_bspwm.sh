@@ -105,10 +105,9 @@ sudo ln -sf /home/$USERINSTALL/.prog/sxhkd-help /usr/bin/sxhkd-help
 # VIM
 cp .vimrc $HOME
 
-# ZSH
-$INSTALLER zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp .zshrc $HOME
+# ALACRITTY
+$INSTALLER alacritty exa
+cp .bashrc $HOME/
 
 # PRINT
 #$INSTALLER scrot xclip
@@ -128,6 +127,9 @@ sudo localectl set-locale LANG=en_US.UTF-8
 
 # THEME
 sudo cp -f gtkrc /usr/share/gtk-2.0/gtkrc
+
+# TERMINAL
+$INSTALLER exa
 
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicie a maquina"

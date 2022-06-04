@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	qterminal
+	alacritty
 
 # program launcher
 super + @space

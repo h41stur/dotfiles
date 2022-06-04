@@ -138,3 +138,5 @@ function md {
                 mkdir $1 && cd $1
 }
 
+alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
+alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
