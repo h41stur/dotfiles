@@ -104,3 +104,25 @@ function cert {
 		curl -s "https://crt.sh/?q=%.$1" -o /tmp/rawdata; cat /tmp/rawdata | grep "<TD>" | grep -vE "style" | cut -d ">" -f 2 | grep -Po '.*(?=....$)' | sort -u | grep -v "*"
 	fi
 }
+
+function e64 {
+	if [ $# -eq 0 ]; then
+		input=$(</dev/stdin)
+	else
+		input=$1
+	fi
+														
+	echo -n "$input" | base64
+	echo
+}
+
+function d64 {
+	if [ $# -eq 0 ]; then
+		input=$(</dev/stdin)
+	else
+		input=$1 																									
+	fi
+																									
+	echo -n "$input" | base64 -d
+	echo
+}
