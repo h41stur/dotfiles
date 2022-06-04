@@ -106,7 +106,7 @@ sudo ln -sf /home/$USERINSTALL/.prog/sxhkd-help /usr/bin/sxhkd-help
 cp .vimrc $HOME
 
 # ALACRITTY
-$INSTALLER alacritty exa
+$INSTALLER alacritty
 cp .bashrc $HOME/
 cp -r alacritty/ $HOME/.config/
 
@@ -131,6 +131,7 @@ sudo cp -f gtkrc /usr/share/gtk-2.0/gtkrc
 
 # TERMINAL
 $INSTALLER exa
+cp .bash-preexec.sh $HOME
 
 # RESTART
 echo -e "[+] Aguarde a instalacao e reinicie a maquina"
