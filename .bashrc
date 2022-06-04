@@ -68,7 +68,7 @@ export PATH="~/go/bin:$PATH"
 
 alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
-alias github="echo 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"
+alias github="echo ghp_lSot"
 
 # FUNCTIONS
 
