@@ -108,6 +108,7 @@ cp .vimrc $HOME
 # ALACRITTY
 $INSTALLER alacritty exa
 cp .bashrc $HOME/
+cp -r alacritty/ $HOME/.config/
 
 # PRINT
 #$INSTALLER scrot xclip
