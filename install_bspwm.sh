@@ -104,11 +104,15 @@ sudo ln -sf /home/$USERINSTALL/.prog/sxhkd-help /usr/bin/sxhkd-help
 
 # VIM
 cp .vimrc $HOME
+sudo cp .vimrc /root/
 
 # ALACRITTY
 $INSTALLER alacritty
 cp .bashrc $HOME/
+sudo cp .bashrc /root/
 cp -r alacritty/ $HOME/.config/
+sudo mkdir -p /root/.config
+sudo cp -r alacritty /root/.config
 
 # PRINT
 #$INSTALLER scrot xclip
