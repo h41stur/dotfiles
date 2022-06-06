@@ -109,7 +109,7 @@ sudo cp .vimrc /root/
 # ALACRITTY
 $INSTALLER alacritty
 cp .bashrc $HOME/
-sudo cp .bashrc /root/
+sudo cp .bashrcroot /root/.bashrc
 cp -r alacritty/ $HOME/.config/
 sudo mkdir -p /root/.config
 sudo cp -r alacritty /root/.config
