@@ -64,11 +64,18 @@ if [ "$PS1" ]; then
 fi
 export EDITOR=vim
 export VISUAL=vim
+export SHELL="/bin/bash"
 export PATH="~/go/bin:$PATH"
+export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
-alias github="echo ghp_lSot"
+alias github="echo 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"
+
+# aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 # FUNCTIONS
 
@@ -79,20 +86,20 @@ function commit {
 		echo
 	else
 		git add .
-		git commit -m $1
+		git commit -m "$1"
 	fi
 }
 
 function push {
-	gt=$(github | wc -c)
-	dir=$(basename `pwd`)
-	if [ $gt -lt 10 ]
-	then
-		echo -n "GitHub Token needed on ~/.zshrc"
-		echo
-	else
-		git push https://`github`@github.com/h41stur/$dir.git
-	fi
+		gt=$(github | wc -c)
+		dir=$(basename `pwd`)
+		if [ $gt -lt 10 ]
+		then
+			echo -n "GitHub Token needed on ~/.zshrc"
+			echo $dir
+		else
+			git push https://`github`@github.com/h41stur/$dir.git
+		fi
 }
 
 function cert {
@@ -106,28 +113,26 @@ function cert {
 }
 
 function e64 {
-	if [ $# -eq 0 ]; then
-		input=$(</dev/stdin)
-	else
-		input=$1
-	fi
-														
-	echo -n "$input" | base64
-	echo
+		if [ $# -eq 0 ]; then
+				input=$(</dev/stdin)
+		else
+				input=$1
+		fi
+
+		echo -n "$input" | base64
 }
 
 function d64 {
-	if [ $# -eq 0 ]; then
-		input=$(</dev/stdin)
-	else
-		input=$1 																									
-	fi
-																									
-	echo -n "$input" | base64 -d
-	echo
+    if [ $# -eq 0 ]; then
+        input=$(</dev/stdin)
+    else
+        input=$1
+    fi
+
+    echo -n "$input" | base64 -d
+    echo
 }
 
-# BASH PREEXEC
 if [[ -f ~/.bash-preexec.sh ]]; then
     unset preexec_functions
     unset precmd_functions
@@ -139,10 +144,10 @@ if [[ -f ~/.bash-preexec.sh ]]; then
         echo -e "Begin: $(date +%Y%m%d%H%M%S)\n"; 
     }
 
-    precmd_timestamp() { 
+    precmd_timestamp() {
         export status_code="$?";
         export date_end=$(date +%s); 
-        echo -e "\nEnd: $(date +%Y%m%d%H%M%S)"; 
+        echo -e "\nEnd: $(date +%Y%m%d%H%M%S)";
         export elapsed=$(( $date_end-$date_begin ));
         echo "Elapsed: $elapsed seconds"; 
     }

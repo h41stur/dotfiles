@@ -3,6 +3,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set mouse=a 
 syntax on
 filetype on
 filetype plugin on
