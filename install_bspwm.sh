@@ -69,6 +69,9 @@ mkdir -p $HOME/.local/share/fonts
 cp -r fonts/* $HOME/.local/share/fonts/
 fc-cache -fv
 
+# I3LOCK
+$INSTALLER i3lock
+
 # POLYBAR
 if [ $OS = '1' ]
 then
