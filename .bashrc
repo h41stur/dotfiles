@@ -70,7 +70,7 @@ export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
-alias github="echo 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"
+alias github="echo ghp_8D"
 
 # aliases
 if [ -f ~/.bash_aliases ]; then
