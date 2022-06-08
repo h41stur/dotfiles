@@ -133,6 +133,17 @@ function d64 {
     echo
 }
 
+function scTmux {
+	[ ! -d "./5-logs/tmuxlogs" ] && mkdir -p "./5-logs/tmuxlogs"
+	script -a -f -O ./5-logs/tmuxlogs/"$1"-"$2"-"$3".log
+}
+
+function logCommands {
+    jsonlog="{\"hostname\":\"$(hostname)\",\"user\":\"$(whoami)\",\"pid\":$$,\"cwd\":\"$(pwd)\",\"command\":\"$(history 1 | sed 's/^[ ]*[0-9]\+[ ]*//' )\",\"status_code\":$status_code,\"date_begin\":$date_begin,\"date_end\":$date_end,\"elapsed\":$elapsed}"
+    logger -p local6.debug "$jsonlog"
+}
+
+# BASH PREEXEC
 if [[ -f ~/.bash-preexec.sh ]]; then
     unset preexec_functions
     unset precmd_functions
