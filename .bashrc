@@ -79,6 +79,25 @@ fi
 
 # FUNCTIONS
 
+function start-project {
+    if [ $# -eq 0 ]
+    then
+        echo -e "Usage:\n\tstart-project <project name>"
+        echo
+    else
+        cwd="$HOME/pentest/$1"
+
+        mkdir -p $cwd/{1-recon/{osint/{manual,tools},scanning/{ports/{custom,tools},web/{custom,toos}}},2-expl/{exploits,payloads},3-post/{1-recon/{manual,tools},2-expl/privesc.3-pivot},4-loot/{scripts,creds,dumps,files,keylog,screenshots},5-logs/{videos,tmuxlogs,rsyslogcommands}}
+        touch $cwd/5-logs/rsyslogcommands/commands.log
+
+        cd $HOME/pentest/$1
+
+        echo -e "Projeto $1 iniciado.\n"
+
+        tts PENTEST $1
+    fi
+}
+
 function commit {
 	if [ $# -eq 0 ]
 	then
@@ -135,7 +154,7 @@ function d64 {
 
 function scTmux {
 	[ ! -d "./5-logs/tmuxlogs" ] && mkdir -p "./5-logs/tmuxlogs"
-	script -a -f -O ./5-logs/tmuxlogs/"$1"-"$2"-"$3".log
+	script -a -f -O ./5-logs/tmuxlogs/"$1"-"$2".log -c bash
 }
 
 function logCommands {

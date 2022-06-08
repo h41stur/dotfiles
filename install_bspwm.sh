@@ -138,6 +138,11 @@ sudo localectl set-locale LANG=en_US.UTF-8
 # THEME
 sudo cp -f gtkrc /usr/share/gtk-2.0/gtkrc
 
+# DOCKER
+$INSTALLER docker
+echo "leonardo ALL=(ALL:ALL) NOPASSWD:/usr/bin/docker" | sudo tee -a /etc/sudoers
+echo "leonardo ALL=(ALL:ALL) NOPASSWD:/usr/bin/xhost" | sudo tee -a /etc/sudoers
+
 # TERMINAL
 $INSTALLER exa
 cp .bash-preexec.sh $HOME
@@ -146,7 +151,16 @@ cp .bash-preexec.sh $HOME
 
 # TMUX
 $INSTALLER tmux
+$INSTALLER inetutils
 $INSTALLER ruby
+$INSTALLER jq
+
+if [ $OS = '1' ]
+then
+    yay -S rsyslog
+else
+    $INSTALLER rsyslog
+fi
 gem install tmuxinator
 set -e
 set -u
