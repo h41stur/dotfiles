@@ -35,7 +35,7 @@ installer() {
 		fi
 
 		# INSTALLING BSPWM
-		$INSTALLER bspwm sxhkd
+		$INSTALLER bspwm sxhkd pavuaudio
 		mkdir -p $HOME/.config/bspwm
 		mkdir -p $HOME/.config/sxhkd
 		cp bspwm/bspwmrc $HOME/.config/bspwm/
