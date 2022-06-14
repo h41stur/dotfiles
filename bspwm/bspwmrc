@@ -35,3 +35,4 @@ ${HOME}/.config/polybar/cuts/launch.sh
 wmname LG3D
 xsetroot -cursor_name left_ptr &
 setxkbmap us_intl
+xsettingsd &
