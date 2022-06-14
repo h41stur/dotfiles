@@ -68,6 +68,7 @@ $INSTALLER numlockx
 mkdir -p $HOME/.local/share/fonts
 cp -r fonts/* $HOME/.local/share/fonts/
 fc-cache -fv
+cp .xsettingsd $HOME
 
 # I3LOCK
 $INSTALLER i3lock
