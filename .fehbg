@@ -1,4 +1,4 @@
 #!/bin/sh
 #feh --no-fehbg --bg-fill $HOME'/.wallpapers/beco.png' 
-feh --no-fehbg --bg-fill $HOME'/.wallpapers/beco2.png'
-#feh --no-fehbg --bg-fill $HOME'/.wallpapers/binaveia.png'
+#feh --no-fehbg --bg-fill $HOME'/.wallpapers/beco2.png'
+feh --no-fehbg --bg-fill $HOME'/.wallpapers/cyberpunk.jpg'
