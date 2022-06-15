@@ -3,4 +3,4 @@
 #feh --no-fehbg --bg-fill $HOME'/.wallpapers/beco2.png'
 #feh --no-fehbg --bg-fill $HOME'/.wallpapers/cyberpunk.jpg'
 #feh --no-fehbg --bg-fill $HOME'/.wallpapers/cyberpunk2.jpg'
-feh --no-fehbg --bg-fill $(ls $HOME/.wallpapers/cyberpunk* | sort -R | head -1)
+feh --no-fehbg --bg-fill $(ls $HOME/.wallpapers/cyberpunk* | shuf -n 1)
