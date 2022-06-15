@@ -155,6 +155,9 @@ super + slash
 	sxhkd-help
 
 # turn off monitors
-super + shift + m
+super + shift + m 
 	sleep 1 && xset -display :0.0 dpms force off
 
+# wallpaper rotate
+super + alt + w
+    $HOME/.fehbg
