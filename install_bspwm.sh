@@ -73,6 +73,9 @@ cp .xsettingsd $HOME
 # I3LOCK
 $INSTALLER i3lock
 
+# POWER
+$INSTALLER xfce4-power-manager
+
 # POLYBAR
 if [ $OS = '1' ]
 then
