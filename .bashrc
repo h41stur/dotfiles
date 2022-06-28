@@ -5,8 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color'
 PS1='[\u@\h \W]\$ '
 
 force_color_prompt=yes
@@ -69,11 +67,7 @@ export SHELL="/bin/bash"
 export PATH="~/go/bin:$PATH"
 export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
-alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
-alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
 alias github="echo ghp_8D"
-alias downarch='sudo pacman -U /var/cache/pacman/pkg/linux-5.18.3.arch1-1-x86_64.pkg.tar.zst'
-alias https='openssl s_client -connect'
 
 # aliases
 if [ -f ~/.bash_aliases ]; then
